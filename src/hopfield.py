@@ -22,18 +22,20 @@ class HopfieldNetwork:
   
   def predict(self, x, max_steps=100):
     self.state = x.reshape(-1,1).copy()
+    energy = []
     prev = None
     for _ in range(max_steps):
         self.update_rule(self.num_neurons) 
-        
+        energy.append(self.compute_energy())
+
         # no change 
         if prev is not None and np.array_equal(self.state, prev):
             break  
 
         prev = self.state.copy()
+    self.energies.append(energy)
     return self.state.flatten()
 
   def compute_energy(self): #compute energy
         energy = -0.5*np.dot(np.dot(self.state.T,self.weights),self.state)
-        self.energies.append(energy)
-    
+        return energy[0][0]
