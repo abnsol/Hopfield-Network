@@ -9,5 +9,5 @@ was able to recover the original digits, demonstrating its ability to denoise an
 retrieve stored patterns.
 
 ## Result Example   
-
 ![Hopfield Results](result.png)  
+- More examples can be found in [main.ipynb](main.ipynb) 
